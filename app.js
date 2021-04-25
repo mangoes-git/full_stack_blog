@@ -7,12 +7,12 @@ const logger = require('morgan');
 const passport = require('passport');
 
 
-require('./server/models/db');
-require('./server/config/passport');
+require('./api/models/db');
+require('./api/config/passport');
 
 const indexRouter = require('./server/routes/index');
 const usersRouter = require('./server/routes/users');
-const apiRouter = require('./server/routes/api');
+const apiRouter = require('./api/routes/index');
 
 const app = express();
 
