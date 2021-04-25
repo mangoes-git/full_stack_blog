@@ -34,7 +34,7 @@ userSchema.methods.generateJwt = function () {
     const expiry = new Date();
     expiry.setDate(expiry.getDate() + 1);
     return jwt.sign({
-        _id = this._id,
+        _id: this._id,
         email: this.email,
         username: this.username,
         exp: parseInt(expiry.getTime() / 1000, 10),

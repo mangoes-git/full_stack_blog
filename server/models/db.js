@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+require('./user');
 const dbURI = 'mongodb://localhost/ponder';
 
 mongoose.connect(dbURI, { useNewUrlParser: true });
