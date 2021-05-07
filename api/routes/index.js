@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrlApi = require('../controllers/api');
 const ctrlAuth = require('../controllers/auth');
+const ctrlComment = require('../controllers/comment');
 const ctrlPost = require('../controllers/post');
 
 /* GET home page. */
@@ -16,6 +17,9 @@ router.route('/posts')
 
 router.route('/posts/:post_id')
       .get(ctrlPost.getPostById);
+
+router.route('/posts/:post_id/comments')
+      .post(ctrlComment.createComment);
 
 router.route('/posts/author/:user_id')
       .get(ctrlPost.getPostsByUser);
