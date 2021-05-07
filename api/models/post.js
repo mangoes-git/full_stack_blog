@@ -10,7 +10,8 @@ const postSchema = new mongoose.Schema({
         default: Date.now
     },
     last_edit: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     title: {
         type: String,
