@@ -49,6 +49,15 @@ const getPosts = (req, res) => {
     });
 };
 
+const getPostById = (req, res) => {
+    let query = Post.findOne({'_id': req.params.post_id});
+    query.exec((err, doc) => {
+        if (err) res.status(400).json(err)
+        res
+           .status(200)
+           .json(doc);
+    });
+};
 
 const getPostsByUser = (req, res) => {
     sortBy = req.query.sortby ? req.query.sortby : 'creation_date'
@@ -71,5 +80,6 @@ const getPostsByUser = (req, res) => {
 module.exports = {
     createPost,
     getPosts,
+    getPostById,
     getPostsByUser,
 }

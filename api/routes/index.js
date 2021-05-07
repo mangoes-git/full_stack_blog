@@ -14,6 +14,9 @@ router.route('/posts')
       .get(ctrlPost.getPosts)
       .post(ctrlPost.createPost);
 
+router.route('/posts/:post_id')
+      .get(ctrlPost.getPostById);
+
 router.route('/posts/author/:user_id')
       .get(ctrlPost.getPostsByUser);
 
