@@ -1,6 +1,13 @@
 <template>
   <b-container>
-    <post-card/>
+    <post-card 
+      v-for="post in posts"
+      :key="post._id"
+      :title="post.title"
+      :author="post.author"
+      :content="post.content"
+      :last_edit="post.last_edit"
+      />
   </b-container>
 </template>
 
@@ -16,11 +23,16 @@ export default {
     this.fetchData();
   },
 
+  data() {
+    return { posts: [] };
+  },
+
   methods: {
     async fetchData() {
-      const res = await fetch("localhost:3000/api/posts");
-      const posts = await res.json();
-      console.log(posts);
+      fetch("http://localhost:3000/api/posts")
+        .then((res) => res.json())
+        .then((data) => {this.posts = data; console.log(data)})
+        .catch((err)=>console.log(err));
     }
   }
 };
