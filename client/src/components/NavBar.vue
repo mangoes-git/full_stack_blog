@@ -1,5 +1,6 @@
 <template>
-  <div>
+<b-row>
+  <b-container>
   <b-navbar toggleable="sm" type="dark" variant="dark">
     <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
 
@@ -11,7 +12,8 @@
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
-</div>
+  </b-container>
+</b-row>
 </template>
 
 <script>
