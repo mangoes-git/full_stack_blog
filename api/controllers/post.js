@@ -77,9 +77,25 @@ const getPostsByUser = (req, res) => {
     });
 };
 
+const updatePost = (req, res) => {
+    const postId = req.params.post_id;
+    const updatedPostContent = req.body.content;
+    Post.findOneAndUpdate({ _id: postId },
+        {
+            content: updatedPostContent,
+            last_edit: Date.now(),
+        },
+        (err, post) => {
+            if (err) res.status(400).json(err);
+
+            res.status(204)
+        });
+};
+
 module.exports = {
     createPost,
     getPosts,
     getPostById,
     getPostsByUser,
+    updatePost,
 }
