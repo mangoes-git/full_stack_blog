@@ -19,11 +19,16 @@ router.route('/posts/:post_id')
       .get(ctrlPost.getPostById)
       .put(ctrlPost.updatePost);
 
+      router.route('/posts/author/:user_id')
+      .get(ctrlPost.getPostsByUser);
+
 router.route('/posts/:post_id/comments')
       .get(ctrlComment.getPostComments)
       .post(ctrlComment.createComment);
 
-router.route('/posts/author/:user_id')
-      .get(ctrlPost.getPostsByUser);
+router.route('/posts/:post_id/comments/:comment_id')
+      .get(ctrlComment.getCommentById)
+      .put(ctrlComment.updateComment);
+
 
 module.exports = router;

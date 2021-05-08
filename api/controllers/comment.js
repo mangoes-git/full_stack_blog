@@ -55,7 +55,30 @@ const createComment = (req, res) => {
     });
 };
 
+const getCommentById = (req, res) => {
+    const postId = req.params.post_id;
+    const commentId = req.params.comment_id;
+
+    let query = Post.findById(postId).select('comments').populate('comments');
+    query.exec((err, doc) => {
+        if (err) res.status(400).json(err);
+        let comment = doc.comments.find((element) => element._id == commentId)
+
+        if (comment) {
+            res.status(200).json(comment);
+        } else {
+            res.status(404).json({'error': 'Comment does not exist'});
+        }
+    })
+};
+
+const updateComment = (req, res) => {
+    return;
+};
+
 module.exports = {
     getPostComments,
+    getCommentById,
     createComment,
+    updateComment,
 }
