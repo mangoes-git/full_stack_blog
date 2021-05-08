@@ -19,6 +19,7 @@ router.route('/posts/:post_id')
       .get(ctrlPost.getPostById);
 
 router.route('/posts/:post_id/comments')
+      .get(ctrlComment.getPostComments)
       .post(ctrlComment.createComment);
 
 router.route('/posts/author/:user_id')

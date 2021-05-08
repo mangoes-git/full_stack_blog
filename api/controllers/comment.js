@@ -2,6 +2,21 @@ const mongoose = require('mongoose');
 const Comment = mongoose.model('Comment');
 const Post = mongoose.model('Post')
 
+const getPostComments = (req, res) => {
+    const postId = req.params.post_id;
+    let query = Post.findById(postId)
+                    .populate('comments')
+                    .select('comments');
+
+    query.exec((err, comments) => {
+        if (err) res.status(400).json(err);
+
+        res
+           .status(200)
+           .json(comments);
+    });
+};
+
 const addCommentToPost = (req, res, post) => {
     let newComment = new Comment();
     newComment.author = req.body.author;
@@ -41,5 +56,6 @@ const createComment = (req, res) => {
 };
 
 module.exports = {
+    getPostComments,
     createComment,
 }
