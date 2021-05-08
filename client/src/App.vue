@@ -1,35 +1,39 @@
 <template>
   <div id="app">
     <b-container>
-      <NavBar />
-
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <navbar />
+      <router-view />
     </b-container>
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
-import Post from "./components/Post.vue";
 export default {
-  name: "App",
   components: {
-    NavBar,
-    Post,
+    navbar: NavBar,
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 0px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
