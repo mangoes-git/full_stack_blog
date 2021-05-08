@@ -1,3 +1,4 @@
+const { json } = require('express');
 const mongoose = require('mongoose');
 const Comment = mongoose.model('Comment');
 const Post = mongoose.model('Post')
@@ -8,12 +9,12 @@ const getPostComments = (req, res) => {
                     .populate('comments')
                     .select('comments');
 
-    query.exec((err, comments) => {
+    query.exec((err, post) => {
         if (err) res.status(400).json(err);
 
         res
            .status(200)
-           .json(comments);
+           .json({comments: post.comments});
     });
 };
 
@@ -28,8 +29,7 @@ const addCommentToPost = (req, res, post) => {
         post.comments.push(newComment._id);
         post.save((err, post) => {
             if (err) res.status(400).json(err);
-            
-            let newComment = post.comments[post.comments.length - 1];
+
             res
                .status(201)
                .json(comment);
@@ -73,7 +73,22 @@ const getCommentById = (req, res) => {
 };
 
 const updateComment = (req, res) => {
-    return;
+    const commentId = req.params.comment_id;
+    const newContent = req.body.content;
+
+    Comment.findByIdAndUpdate(
+        commentId,
+        {
+            content: newContent,
+            last_edit: Date.now()
+        },
+        (err, comment) => {
+            if (err) res.status(400).json(err);
+
+            res
+               .status(204)
+               .send();
+        });
 };
 
 module.exports = {

@@ -88,7 +88,9 @@ const updatePost = (req, res) => {
         (err, post) => {
             if (err) res.status(400).json(err);
 
-            res.status(204)
+            res
+               .status(204)
+               .send();
         });
 };
 
