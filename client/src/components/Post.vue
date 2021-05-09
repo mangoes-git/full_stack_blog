@@ -5,11 +5,16 @@
         <b-card-title>{{ title }}</b-card-title>
         <b-card-sub-title class="mb-2">By {{ author }}</b-card-sub-title>
         <b-card-text>
-          {{ content }}
+          <div v-if="content">
+            {{ content }}
+            </div>
+            <div v-else class="empty-post-content">
+              User forgot to include content.
+            </div>
         </b-card-text>
       </b-card-body>
       <b-card-body>
-        <a href="#" class="card-link">Card link</a>
+        <router-link to="/post/:_id/comments" class="card-link">View Comments</router-link>
         <a href="#" class="card-link">Another link</a>
       </b-card-body>
 
@@ -30,3 +35,9 @@ export default {
   ]
 };
 </script>
+
+<style scoped>
+  .empty-post-content {
+    font-style: italic
+  }
+</style>
