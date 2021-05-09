@@ -29,7 +29,9 @@ router.get('/test', ctrlApi.test);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
-router.get('/user/info', auth, ctrlUser.getUserInfo);
+router.get('/user/', auth, ctrlUser.getLoggedUser);
+
+router.get('/user/:username', ctrlUser.getUser);
 
 router.route('/posts')
       .get(ctrlPost.getPosts)
