@@ -7,8 +7,8 @@
 
       <b-collapse id="nav-text-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item>Home</b-nav-item>
-          <b-nav-item>Profile</b-nav-item>
+          <b-nav-item to="/">Home</b-nav-item>
+          <b-nav-item to="/profile">Profile</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-container>
