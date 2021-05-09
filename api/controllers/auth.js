@@ -22,6 +22,7 @@ const register = (req, res) => {
             const token = user.generateJwt();
             res
                .status(200)
+               .cookie('jwt', token, { httpOnly: true })
                .json({token});
         }
     });
@@ -46,6 +47,7 @@ const login = (req, res) => {
             token = user.generateJwt();
             res
                .status(200)
+               .cookie('jwt', token, { httpOnly: true })
                .json({token});
         } else {
             res
