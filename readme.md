@@ -57,6 +57,74 @@ This project uses a MEVN stack (Mongo, Express, Vue.js, Node.js). The following 
     * ``GET``: Returns the information of the given comment.
     * ``PUT``: Updates the content of the given comment.
 
+
+## Schemas
+
+### User
+
+```
+{
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    bio: {
+        type: String,
+        default: ''
+    },
+    hash: String,
+    salt: String
+}
+```
+
+### Post
+```
+{
+    author: {
+        type: User,
+        required: True
+    },
+    creation_date: {
+        type: Date,
+        default: Date.now
+    },
+    last_edit: {
+        type: Date,
+        default: Date.now
+    },
+    title: {
+        type: String,
+        maxLength: 255
+    },
+    content: String,
+    comments: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'} ]
+}
+```
+
+### Comment
+```
+{
+    author: {
+        type: User,
+    },
+    creation_date: {
+        type: Date,
+        default: Date.now
+    },
+    last_edit: {
+        type: Date,
+        default: Date.now
+    },
+    content: String
+}
+```
+
 ## TODO
   * Add pagination.
   * Add user avatars.
