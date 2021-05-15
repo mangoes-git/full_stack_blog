@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import PostComments from '../views/PostComments.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/post/:id/comments',
+    name: 'PostComments',
+    component: PostComments,
+    props: route => ({id: route.params.id})
   },
   {
     path: '/about',

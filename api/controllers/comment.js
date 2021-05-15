@@ -11,10 +11,15 @@ const getPostComments = (req, res) => {
 
     query.exec((err, post) => {
         if (err) res.status(400).json(err);
+        
+        if (post) {
+            res
+                .status(200)
+                .json({comments: post.comments});
+        } else {
+            res.status(404);
 
-        res
-           .status(200)
-           .json({comments: post.comments});
+        }
     });
 };
 

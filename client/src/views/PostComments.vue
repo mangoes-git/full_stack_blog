@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <post-card />
+    <post-card :is-home-view="false"/>
     <!-- get post id somehow so we can query the api-->
   </b-container>
 </template>
@@ -9,6 +9,9 @@
 import Post from '../components/Post.vue';
 export default {
   name: "post-comments",
+  props: [
+    "id",
+    ],
   components: {
     "post-card": Post,
   },
@@ -26,7 +29,7 @@ export default {
 
   methods: {
     async fetchData() {
-      fetch("http://localhost:3000/api/post/:id/comments")
+      fetch(`http://localhost:3000/api/posts/${this.id}/comments`)
         .then((res) => res.json())
         .then((data) => {console.log(data)})
         .catch((err)=>console.log(err));

@@ -7,15 +7,17 @@
         <b-card-text>
           <div v-if="content">
             {{ content }}
-          </div>
-          <div v-else class="empty-post-content">
-            User forgot to include content.
-          </div>
+            </div>
+            <div v-else class="empty-post-content">
+              User forgot to include content.
+            </div>
         </b-card-text>
       </b-card-body>
-      <b-card-body v-if="is_home_view">
-        <router-link :to="{name: 'PostComments', params: { id: id} }" class="card-link">View Comments</router-link>
+      <b-card-body>
+        <router-link to="/post/:_id/comments" class="card-link">View Comments</router-link>
+        <a href="#" class="card-link">Another link</a>
       </b-card-body>
+
       <b-card-footer>Last edited: {{ last_edit }}</b-card-footer>
     </b-card>
   </b-row>
@@ -24,13 +26,12 @@
 <script>
 export default {
   props: [
-    "id",
+    "_id",
     "title",
     "author",
     "content",
     "creation_date",
-    "last_edit",
-    "is_home_view"
+    "last_edit"
   ]
 };
 </script>

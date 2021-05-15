@@ -1,12 +1,15 @@
 <template>
   <b-container>
     <post-card 
+      
       v-for="post in posts"
       :key="post._id"
+      :id="post._id"
       :title="post.title"
       :author="post.author"
       :content="post.content"
       :last_edit="post.last_edit"
+      :is_home_view="true"
       />
   </b-container>
 </template>
