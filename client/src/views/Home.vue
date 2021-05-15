@@ -1,5 +1,7 @@
 <template>
-  <b-container>
+  
+  <div>
+    <post-modal/>
     <post-card 
       
       v-for="post in posts"
@@ -11,15 +13,17 @@
       :last_edit="post.last_edit"
       :is_home_view="true"
       />
-  </b-container>
+  </div>
 </template>
 
 <script>
 import Post from '../components/Post.vue';
+import CreatePost from '../components/CreatePost.vue';
 export default {
   name: "home",
   components: {
     "post-card": Post,
+    "post-modal": CreatePost,
   },
 
   mounted() {

@@ -24,6 +24,7 @@ const createPost = (req, res) => {
                .status(500)
                .json(err);
         } else {
+            console.log(req.body)
             res
                .status(201)
                .json(req.body);
