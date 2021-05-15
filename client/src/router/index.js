@@ -15,7 +15,7 @@ const routes = [
     path: '/post/:id/comments',
     name: 'PostComments',
     component: PostComments,
-    props: route => ({id: route.params.id})
+    props: route => ({post_id: route.params.id})
   },
   {
     path: '/about',
