@@ -56,3 +56,9 @@ This project uses a MEVN stack (Mongo, Express, Vue.js, Node.js). The following 
   * ``posts/:post_id/comments/:comment_id``:
     * ``GET``: Returns the information of the given comment.
     * ``PUT``: Updates the content of the given comment.
+
+## TODO
+  * Add pagination.
+  * Add user avatars.
+  * Implement voting system on comments.
+  * Deploy on Heroku.
