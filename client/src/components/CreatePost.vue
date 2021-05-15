@@ -10,7 +10,7 @@
 
       <b-modal id="create-post-modal" title="Create Post" @submit="onSubmit">
         <b-container fluid>
-          <b-form >
+          <b-form @submit="onSubmit">
             <b-form-group
               id="post-title-text"
               label="Post Title"
@@ -60,12 +60,17 @@ export default {
   data() {
     return {
       form: {
-        content: ''
+        content: '',
+        title: '',
       }
     }
   },
   methods: {
     async onSubmit() {
+      if (!this.form.title || !this.form.content) {
+        alert('All fields must be filled.');
+        return;
+      }
       console.log('submitting data');
       console.log(this.form);
       fetch('http://localhost:3000/api/posts', {
